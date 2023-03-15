@@ -44,6 +44,7 @@ public class DragView2 extends View {
         int rawX=(int) event.getRawX();
         int rawY=(int) event.getRawY();
         switch(event.getAction()){
+
             case MotionEvent.ACTION_DOWN:
                 //记录触摸点坐标
                 lastx=rawX;
