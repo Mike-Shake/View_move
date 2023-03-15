@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".DragViewTest">
 
-    <com.example.view_move.DragView1
+    <com.example.view_move.DragView2
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintTop_toTopOf="parent"

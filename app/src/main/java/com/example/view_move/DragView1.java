@@ -41,13 +41,13 @@ public class DragView1 extends View {
         setBackgroundColor(Color.RED);
     }
 
+    //视图坐标方式
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int x = (int) event.getX();
         Log.d(TAG, "onTouchEvent: x=" + x);
         int y = (int) event.getY();
         Log.d(TAG, "onTouchEvent:  y=" + y);
-        //视图坐标方式
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 //记录触摸点坐标
