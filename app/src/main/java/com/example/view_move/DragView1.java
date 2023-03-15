@@ -34,6 +34,7 @@ public class DragView1 extends View {
     private int lastY;
 
     private final String TAG = "drawview1";
+
     //涂色
     private void ininView() {
         //给View设置背景颜色，便于观察
@@ -44,11 +45,8 @@ public class DragView1 extends View {
     public boolean onTouchEvent(MotionEvent event) {
         int x = (int) event.getX();
         Log.d(TAG, "onTouchEvent: x=" + x);
-
         int y = (int) event.getY();
         Log.d(TAG, "onTouchEvent:  y=" + y);
-
-
         //视图坐标方式
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
