@@ -31,7 +31,7 @@ public class DragView4 extends View {
         setBackgroundColor(Color.RED);
     }
 
-    //scrollBy方法
+    //scrollTo方法
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int x=(int) event.getX();

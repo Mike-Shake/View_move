@@ -1,40 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
     tools:context=".MainActivity">
-
-  <com.lwp.scrolltest.DragViewGroup
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/view">
-
-    <FrameLayout
+    <com.example.view_move.DragViewGroup
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background=" @android:color/holo_blue_light">
+        android:id="@+id/view">
 
-      <Button
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Menu" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_light">
 
-      <FrameLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@android:color/holo_orange_dark">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menu" />
+        </FrameLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Main" />
-      </FrameLayout>
-    </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_orange_dark">
 
-  </com.lwp.scrolltest.DragViewGroup>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Main" />
+        </FrameLayout>
+    </com.example.view_move.DragViewGroup>
 </RelativeLayout>
+

@@ -13,24 +13,25 @@ import androidx.customview.widget.ViewDragHelper;
 
 public class DragViewGroup extends FrameLayout {
 
-    public DragViewGroup(@NonNull Context context) {
+    private ViewDragHelper mViewDragHelper;
+    private View mMenuView, mMainView;
+    private int mWidth;
+
+    public DragViewGroup(Context context) {
         super(context);
         initView();
     }
 
-    public DragViewGroup(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public DragViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
 
-    public DragViewGroup(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DragViewGroup(Context context,
+                         AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
     }
-
-    private ViewDragHelper mViewDragHelper;
-    private View mMenuView, mMainView;
-    private int mWidth;
 
     @Override
     protected void onFinishInflate() {
@@ -42,7 +43,7 @@ public class DragViewGroup extends FrameLayout {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        mWidth = mMenuView.getMinimumWidth();
+        mWidth = mMenuView.getMeasuredWidth();
     }
 
     @Override
@@ -63,20 +64,22 @@ public class DragViewGroup extends FrameLayout {
 
     private ViewDragHelper.Callback callback =
             new ViewDragHelper.Callback() {
+
                 // 何时开始检测触摸事件
                 @Override
-                public boolean tryCaptureView(@NonNull View child, int pointerId) {
-                    //如果当前触摸的child是mMianView是开始检测
+                public boolean tryCaptureView(View child, int pointerId) {
+                    //如果当前触摸的child是mMainView时开始检测
                     return mMainView == child;
                 }
 
-                //触摸到View后回调
+                // 触摸到View后回调
                 @Override
-                public void onViewCaptured(@NonNull View capturedChild, int activePointerId) {
+                public void onViewCaptured(View capturedChild,
+                                           int activePointerId) {
                     super.onViewCaptured(capturedChild, activePointerId);
                 }
 
-                //当拖拽状态改变，比如child，dragging
+                // 当拖拽状态改变，比如idle，dragging
                 @Override
                 public void onViewDragStateChanged(int state) {
                     super.onViewDragStateChanged(state);
@@ -101,14 +104,14 @@ public class DragViewGroup extends FrameLayout {
                     return left;
                 }
 
-                //拖拽结束后调用
+                // 拖动结束后调用
                 @Override
-                public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {
+                public void onViewReleased(View releasedChild, float xvel, float yvel) {
                     super.onViewReleased(releasedChild, xvel, yvel);
                     //手指抬起后缓慢移动到指定位置
                     if (mMainView.getLeft() < 500) {
                         //关闭菜单
-                        //相当于Scroller的startScroller方法
+                        //相当于Scroller的startScroll方法
                         mViewDragHelper.smoothSlideViewTo(mMainView, 0, 0);
                         ViewCompat.postInvalidateOnAnimation(DragViewGroup.this);
                     } else {
